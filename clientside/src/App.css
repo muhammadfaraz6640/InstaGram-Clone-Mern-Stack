@@ -5,3 +5,23 @@ a{
 .nav-wrapper{
   background-color: white;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+
+.brand-logo{
+  font-family: 'Grand Hotel', cursive;
+}
+.my-login-card{
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
+  margin: 10px auto;
+  margin-top: 100px;
+}
+
+.home-card{
+  max-width: 500px;
+  height: max-content;
+  margin: 26px auto;
+  
+}

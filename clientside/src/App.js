@@ -1,11 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import './Profile.css';
 import NavBar from '../src/Components/NavBar';
 import Profile from '../src/Components/Profile';
 import Signin from '../src/Components/Signin';
 import Home from '../src/Components/Home';
 import Signup from '../src/Components/Signup';
+import Create from '../src/Components/WritePost';
 import {BrowserRouter,Route,Switch,useHistory} from 'react-router-dom'
 
 function App() {
@@ -23,6 +25,9 @@ function App() {
     </Route>
     <Route path="/signup">
         <Signup />
+    </Route>
+    <Route path="/Create">
+        <Create />
     </Route>
     </BrowserRouter>
   );
