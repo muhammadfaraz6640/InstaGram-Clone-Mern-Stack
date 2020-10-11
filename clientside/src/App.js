@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{createContext,useReducer,useEffect,useContext} from 'react';
 
 import './App.css';
 import './Profile.css';
@@ -8,28 +8,55 @@ import Signin from '../src/Components/Signin';
 import Home from '../src/Components/Home';
 import Signup from '../src/Components/Signup';
 import Create from '../src/Components/WritePost';
-import {BrowserRouter,Route,Switch,useHistory} from 'react-router-dom'
+import {Reducer,initialState} from '../src/Reducers/UserReducer';
+import {BrowserRouter,Route,Switch,useHistory} from 'react-router-dom';
+export const UserContext = createContext()
+
+const Routing = ()=>{
+    const history = useHistory()
+    const {state,dispatch} = useContext(UserContext)
+    useEffect(()=>{
+      const user = JSON.parse(localStorage.getItem("user"))  //json.parse converts string to object
+      if(user){
+        dispatch({type:"USER",payload:user})
+        // console.log(user)
+        history.push("/")
+      }else{        
+             history.push('/signin')
+      }
+    },[])
+    return(
+      <Switch>
+        <Route exact path="/" >
+        <Home />
+        </Route>
+        <Route path="/signin">
+          <Signin />
+        </Route>
+        <Route path="/signup">
+          <Signup />
+        </Route>
+        <Route exact path="/profile">
+          <Profile />
+        </Route>
+        <Route path="/create">
+          <Create/>
+        </Route>
+        
+        
+      </Switch>
+    )
+  }
 
 function App() {
+    const [state,dispatch] = useReducer(Reducer,initialState)
   return (
+      <UserContext.Provider value={{state,dispatch}}>
     <BrowserRouter>
     <NavBar />
-    <Route exact path="/">
-        <Home />
-    </Route>
-    <Route path="/signin">
-        <Signin />
-    </Route>
-    <Route path="/profile">
-        <Profile />
-    </Route>
-    <Route path="/signup">
-        <Signup />
-    </Route>
-    <Route path="/Create">
-        <Create />
-    </Route>
+    <Routing />  
     </BrowserRouter>
+   </UserContext.Provider>
   );
 }
 

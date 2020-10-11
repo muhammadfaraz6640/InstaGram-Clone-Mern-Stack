@@ -41,7 +41,7 @@ return(
         <input type="text" placeholder="Name" onChange={(e)=>setName(e.target.value)}/>
         <input type="text" placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
         <input type="text" placeholder="Password" onChange={(e)=>setPasword(e.target.value)}/>
-        <button class="btn waves-effect waves-light #80cbc4 teal lighten-3" type="submit" name="action"   onClick={()=>PostData()}>Signup</button>
+        <button class="btn waves-effect waves-light #80cbc4 teal lighten-3" type="submit" name="action" onClick={()=>PostData()}>Signup</button>
         <h3><Link to="/signin">Already Have an Account?</Link></h3>
     </div>
 </div>
