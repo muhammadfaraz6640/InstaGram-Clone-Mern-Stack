@@ -19,8 +19,7 @@ const Routing = ()=>{
       const user = JSON.parse(localStorage.getItem("user"))  //json.parse converts string to object
       if(user){
         dispatch({type:"USER",payload:user})
-        // console.log(user)
-        history.push("/")
+        // console.log(user)        
       }else{        
              history.push('/signin')
       }

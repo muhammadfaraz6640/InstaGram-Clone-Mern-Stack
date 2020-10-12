@@ -3,6 +3,7 @@ import {UserContext} from '../App'
 
 const Profile = ()=>{
   const [Image,setImage] = useState([])
+  const {state,dispatch} = useContext(UserContext)
   useEffect(()=>{
           fetch('/mypost',{
               headers:{
@@ -23,7 +24,7 @@ return(
                 <img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="" />
               </div>
               <div className="profile-user-settings">
-                <h1 className="profile-user-name">Faraz Ansar</h1>                
+                <h1 className="profile-user-name">{state?state.name:"loading profile"}</h1>                
               </div>
               <div className="profile-stats">
                 <ul>
