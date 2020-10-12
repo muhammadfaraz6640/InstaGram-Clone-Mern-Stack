@@ -12,14 +12,13 @@ const postSchema = new mongoose.Schema({
     },
     photo:{
         type:String,
-        // required:true
-        default : "no photo"
+        required:true        
     },
-    // likes:[{type:ObjectId,ref:"User"}],
-    // comments:[{
-    //     text:String,
-    //     postedBy:{type:ObjectId,ref:"User"}
-    // }],
+    likes:[{type:ObjectId,ref:"User"}], //array of object ids
+    comments:[{
+        text:String,
+        postedBy:{type:ObjectId,ref:"User"}
+    }],
     postedBy:{
        type:ObjectId,   //object id of user who have created the post
        ref:"User"  //user model
