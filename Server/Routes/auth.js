@@ -61,11 +61,15 @@ router.post('/signin',(req,res)=>{
         bcrypt.compare(password,savedUser.password)
         .then(Match=>{
             if(Match){
+                let user = {};
                 // res.json({message:"successfully signed in"})
                const token = jwt.sign({_id:savedUser._id},JWT_SECRET)
-               res.json(token)
-            //    const {_id,name,email,followers,following,pic} = savedUser
-            //    res.json({token,user:{_id,name,email,followers,following,pic}})
+            //    res.json(token)
+               const {_id,name,email} = savedUser
+               user = {_id,name,email}
+               res.json({token,user})
+            //    console.log(token)
+            //    console.log(user)
             }
             else{
                 return res.status(422).json({error:"Invalid Email or password"})
